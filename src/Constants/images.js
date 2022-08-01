@@ -4,7 +4,6 @@ import api from "../Assets/api.png";
 import cpp from "../Assets/cpp.png";
 import css from "../Assets/css.png";
 import figma from "../Assets/figma.png";
-import flutter from "../Assets/flutter.png";
 import git from "../Assets/git.png";
 import graphql from "../Assets/graphql.png";
 import html from "../Assets/html.png";
@@ -15,6 +14,8 @@ import python from "../Assets/python.png";
 import react from "../Assets/react.png";
 import redux from "../Assets/redux.png";
 import sass from "../Assets/sass.png";
+import tailwind from "../Assets/tailwind.png";
+import bootstrap from "../Assets/bootstrap.png";
 import typescript from "../Assets/typescript.png";
 import vue from "../Assets/vue.png";
 
@@ -42,7 +43,6 @@ export default {
 	cpp,
 	css,
 	figma,
-	flutter,
 	git,
 	graphql,
 	html,
@@ -52,6 +52,8 @@ export default {
 	python,
 	react,
 	redux,
+	tailwind,
+	bootstrap,
 	sass,
 	typescript,
 	vue,
