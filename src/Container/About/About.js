@@ -1,24 +1,51 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-
 import "./About.scss";
+import { images } from "../../Constants";
+import { AppWrap } from "../../Wrapper";
+// import { urlFor, client } from "../../Client";
 const About = () => {
+	// const [abouts, setAbouts] = useState([]);
+	// useEffect(() => {
+	// 	const query = '*[_type == "abouts"]';
+	// 	client.fetch(query)
+	// 		.then((data) => {
+	// 			setAbouts(data);
+	// 		})
+	// 		.catch((err) => console.log(err));
+	// }, []);
+
 	const abouts = [
 		{
-			title: "Web Development",
-			description: "Professional Front-End Developer",
-			imgUrl: "",
+			title: "Web Developer",
+			description:
+				"Experienced Web Developer with a passion for building and functional Web Applications.",
+			imgUrl: images.about01,
 		},
 		{
-			title: "UI Design",
-			description: "Professional UI Designer",
-			imgUrl: "",
+			title: "Frontend Developer",
+			description:
+				"Experienced Frontend Developer with a passion for building and functional Web Applications.",
+			imgUrl: images.about02,
+		},
+		{
+			title: "React Developer",
+			description:
+				"Experienced React Developer with a passion for building and functional Web Applications.",
+			imgUrl: images.about03,
+		},
+		{
+			title: "UI Designer",
+			description:
+				"Experienced UI Designer with a passion for Designing Web Applications.",
+			imgUrl: images.about04,
 		},
 	];
+
 	return (
 		<>
 			<h2 className="head-text">
-				I Know That <span>Good Design</span> means{" "}
+				I Know That <span>Good Development</span> means{" "}
 				<span>Good Business</span>
 			</h2>
 			<div className="app__profiles">
@@ -54,4 +81,4 @@ const About = () => {
 	);
 };
 
-export default About;
+export default AppWrap(About, "about");

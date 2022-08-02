@@ -12,12 +12,12 @@ const Navbar = () => {
 			</div>
 			<ul className="app__navbar-links">
 				{[
-					"Home",
-					"About",
-					"Work",
-					"Skills",
-					"Testimonial",
-					"Contact",
+					"home",
+					"about",
+					"work",
+					"skills",
+					"testimonial",
+					"contact",
 				].map((item, index) => (
 					<li
 						className="app__flex p-text"
