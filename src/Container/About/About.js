@@ -1,46 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import "./About.scss";
-import { images } from "../../Constants";
 import { AppWrap } from "../../Wrapper";
-// import { urlFor, client } from "../../Client";
+import { client } from "../../Client";
 const About = () => {
-	// const [abouts, setAbouts] = useState([]);
-	// useEffect(() => {
-	// 	const query = '*[_type == "abouts"]';
-	// 	client.fetch(query)
-	// 		.then((data) => {
-	// 			setAbouts(data);
-	// 		})
-	// 		.catch((err) => console.log(err));
-	// }, []);
-
-	const abouts = [
-		{
-			title: "Web Developer",
-			description:
-				"Experienced Web Developer with a passion for building and functional Web Applications.",
-			imgUrl: images.about01,
-		},
-		{
-			title: "Frontend Developer",
-			description:
-				"Experienced Frontend Developer with a passion for building and functional Web Applications.",
-			imgUrl: images.about02,
-		},
-		{
-			title: "React Developer",
-			description:
-				"Experienced React Developer with a passion for building and functional Web Applications.",
-			imgUrl: images.about03,
-		},
-		{
-			title: "UI Designer",
-			description:
-				"Experienced UI Designer with a passion for Designing Web Applications.",
-			imgUrl: images.about04,
-		},
-	];
+	const [abouts, setAbouts] = useState([]);
+	useEffect(() => {
+		const query = `*[_type == "abouts"]{title,description,imgUrl{asset->{_id,url}}}`;
+		client.fetch(query)
+			.then((data) => {
+				setAbouts(data);
+			})
+			.catch((err) => console.log(err));
+	}, []);
 
 	return (
 		<>
@@ -60,7 +32,10 @@ const About = () => {
 						className="app__profile-item"
 						key={about.title + index}
 					>
-						<img src={about.imgUrl} alt={about.title} />
+						<img
+							src={about.imgUrl.asset.url}
+							alt={about.title}
+						/>
 						<h2
 							className="bold-text"
 							style={{ marginTop: 20 }}
