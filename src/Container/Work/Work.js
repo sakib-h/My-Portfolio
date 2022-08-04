@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { AppWrap } from "../../Wrapper";
 import { client } from "../../Client";
 const Work = () => {
-	const handleWorkFilter = (item) => {};
 	const [activeFilter, setActiveFilter] = useState("All");
 	const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
 	const [works, setWorks] = useState([]);
@@ -19,6 +18,22 @@ const Work = () => {
 			setFilterWork(data);
 		});
 	}, []);
+
+	const handleWorkFilter = (item) => {
+		setActiveFilter(item);
+		setAnimateCard([{ y: 100, opacity: 0 }]);
+
+		setTimeout(() => {
+			setAnimateCard([{ y: 0, opacity: 1 }]);
+			if (item === "All") {
+				setFilterWork(works);
+			} else {
+				setFilterWork(
+					works.filter((work) => work.tags.includes(item))
+				);
+			}
+		}, 500);
+	};
 
 	return (
 		<>
@@ -52,7 +67,7 @@ const Work = () => {
 			<motion.div
 				animate={animateCard}
 				transition={{ duration: 0.5, delayChildren: 0.5 }}
-				className="appPP__work-portfolio"
+				className="app__work-portfolio"
 			>
 				{filterWork.map((work, index) => (
 					<div
