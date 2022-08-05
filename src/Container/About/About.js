@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import "./About.scss";
-import { AppWrap } from "../../Wrapper";
+import { AppWrap, MotionWrap } from "../../Wrapper";
 import { client } from "../../Client";
 const About = () => {
 	const [abouts, setAbouts] = useState([]);
 	useEffect(() => {
 		const query = `*[_type == "abouts"]{title,description,imgUrl{asset->{_id,url}}}`;
-		client.fetch(query)
+		client
+			.fetch(query)
 			.then((data) => {
 				setAbouts(data);
 			})
@@ -30,23 +31,13 @@ const About = () => {
 							type: "tween",
 						}}
 						className="app__profile-item"
-						key={about.title + index}
-					>
-						<img
-							src={about.imgUrl.asset.url}
-							alt={about.title}
-						/>
-						<h2
-							className="bold-text"
-							style={{ marginTop: 20 }}
-						>
+						key={about.title + index}>
+						<img src={about.imgUrl.asset.url} alt={about.title} />
+						<h2 className="bold-text" style={{ marginTop: 20 }}>
 							{about.title}
 						</h2>
 
-						<p
-							className="p-text"
-							style={{ marginTop: 10 }}
-						>
+						<p className="p-text" style={{ marginTop: 10 }}>
 							{about.description}
 						</p>
 					</motion.div>
@@ -56,4 +47,8 @@ const About = () => {
 	);
 };
 
-export default AppWrap(About, "about");
+export default AppWrap(
+	MotionWrap(About, "app__about"),
+	"about",
+	"app__whiteBg"
+);

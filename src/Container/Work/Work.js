@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Work.scss";
 import { AiFillEye, AiFillGithub } from "react-icons/ai";
 import { motion } from "framer-motion";
-import { AppWrap } from "../../Wrapper";
+import { AppWrap, MotionWrap } from "../../Wrapper";
 import { client } from "../../Client";
 const Work = () => {
 	const [activeFilter, setActiveFilter] = useState("All");
@@ -13,7 +13,6 @@ const Work = () => {
 	useEffect(() => {
 		const query = `*[_type == "works"]{title, description, projectLink, codeLink, imgUrl{asset->{_id,url}}, tags}`;
 		client.fetch(query).then((data) => {
-			console.log(data);
 			setWorks(data);
 			setFilterWork(data);
 		});
@@ -28,9 +27,7 @@ const Work = () => {
 			if (item === "All") {
 				setFilterWork(works);
 			} else {
-				setFilterWork(
-					works.filter((work) => work.tags.includes(item))
-				);
+				setFilterWork(works.filter((work) => work.tags.includes(item)));
 			}
 		}, 500);
 	};
@@ -42,43 +39,29 @@ const Work = () => {
 			</h2>
 
 			<div className="app__work-filter">
-				{[
-					"UI/UX",
-					"Web App",
-					"Mobile App",
-					"React Js",
-					"All",
-				].map((item, index) => (
-					<div
-						key={index}
-						onClick={() => {
-							handleWorkFilter(item);
-						}}
-						className={`app__work-filter-item app_flex p-text ${
-							activeFilter === item
-								? "item-active"
-								: ""
-						}`}
-					>
-						{item}
-					</div>
-				))}
+				{["UI/UX", "Web App", "Mobile App", "React Js", "All"].map(
+					(item, index) => (
+						<div
+							key={index}
+							onClick={() => {
+								handleWorkFilter(item);
+							}}
+							className={`app__work-filter-item app_flex p-text ${
+								activeFilter === item ? "item-active" : ""
+							}`}>
+							{item}
+						</div>
+					)
+				)}
 			</div>
 			<motion.div
 				animate={animateCard}
 				transition={{ duration: 0.5, delayChildren: 0.5 }}
-				className="app__work-portfolio"
-			>
+				className="app__work-portfolio">
 				{filterWork.map((work, index) => (
-					<div
-						className="app__work-item app__flex"
-						key={index}
-					>
+					<div className="app__work-item app__flex" key={index}>
 						<div className="app__work-img app__flex">
-							<img
-								src={work.imgUrl.asset.url}
-								alt={work.title}
-							/>
+							<img src={work.imgUrl.asset.url} alt={work.title} />
 							<motion.div
 								whileHover={{ opacity: [0, 1] }}
 								transition={{
@@ -86,27 +69,22 @@ const Work = () => {
 									ease: "easeInOut",
 									staggerChildren: 0.5,
 								}}
-								className="app__work-hover app__flex"
-							>
+								className="app__work-hover app__flex">
 								<a
 									href={work.projectLink}
 									target="_blank"
-									rel="noreferrer"
-								>
+									rel="noreferrer">
 									<motion.div
 										whileInView={{
 											scale: [0, 1],
 										}}
 										whileHover={{
-											scale: [
-												1, 0.9,
-											],
+											scale: [1, 0.9],
 										}}
 										transition={{
 											duration: 0.25,
 										}}
-										className="app__flex"
-									>
+										className="app__flex">
 										<AiFillEye />
 									</motion.div>
 								</a>
@@ -114,35 +92,26 @@ const Work = () => {
 								<a
 									href={work.codeLink}
 									target="_blank"
-									rel="noreferrer"
-								>
+									rel="noreferrer">
 									<motion.div
 										whileInView={{
 											scale: [0, 1],
 										}}
 										whileHover={{
-											scale: [
-												1, 0.9,
-											],
+											scale: [1, 0.9],
 										}}
 										transition={{
 											duration: 0.25,
 										}}
-										className="app__flex"
-									>
+										className="app__flex">
 										<AiFillGithub />
 									</motion.div>
 								</a>
 							</motion.div>
 						</div>
 						<div className="app__work-content app__flex">
-							<h4 className="bold-text">
-								{work.title}
-							</h4>
-							<p
-								className="p-text"
-								style={{ marginTop: 10 }}
-							>
+							<h4 className="bold-text">{work.title}</h4>
+							<p className="p-text" style={{ marginTop: 10 }}>
 								{work.description}
 							</p>
 
@@ -157,4 +126,8 @@ const Work = () => {
 	);
 };
 
-export default AppWrap(Work, "work");
+export default AppWrap(
+	MotionWrap(Work, "app__works"),
+	"work",
+	"app__primaryBg"
+);
