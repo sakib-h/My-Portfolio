@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
-import { AiFillEye, AiFillGithub } from "react-icons/ai";
 import { client } from "../../Client";
 import { AppWrap, MotionWrap } from "../../Wrapper";
 import "./Skills.scss";
@@ -55,7 +54,6 @@ const Skills = () => {
 							<motion.div className="app__skills-exp-works">
 								{experience.works.map((work) => (
 									<>
-										{console.log(work.year)}
 										<motion.div
 											whileInView={{ opacity: [0, 1] }}
 											transition={{ duration: 0.5 }}
