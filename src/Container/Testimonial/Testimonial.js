@@ -13,12 +13,9 @@ const Testimonial = () => {
 		const testimonialQuery = `*[_type == "testimonials"]`;
 		// {name, company, imgurl{asset->{_id,url}}, feedback}
 		client.fetch(query).then((data) => {
-			console.log(data);
-
 			setBrands(data);
 		});
 		client.fetch(testimonialQuery).then((data) => {
-			console.log(data);
 			setTestimonials(data);
 		});
 	}, []);

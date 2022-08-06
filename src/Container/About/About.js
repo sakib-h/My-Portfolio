@@ -7,12 +7,9 @@ const About = () => {
 	const [abouts, setAbouts] = useState([]);
 	useEffect(() => {
 		const query = `*[_type == "abouts"]{title,description,imgUrl{asset->{_id,url}}}`;
-		client
-			.fetch(query)
-			.then((data) => {
-				setAbouts(data);
-			})
-			.catch((err) => console.log(err));
+		client.fetch(query).then((data) => {
+			setAbouts(data);
+		});
 	}, []);
 
 	return (

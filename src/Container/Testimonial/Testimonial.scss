@@ -5,6 +5,7 @@
 }
 .app__testimonial-item {
 	width: 60%;
+	margin: auto;
 	min-width: 320px;
 	background-color: var(--white-color);
 	display: flex;
@@ -93,6 +94,7 @@
 
 .app__testimonial-brands {
 	width: 80%;
+	margin: auto;
 	flex-wrap: wrap;
 	margin-top: 2rem;
 	div {

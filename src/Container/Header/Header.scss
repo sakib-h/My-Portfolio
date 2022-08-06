@@ -143,6 +143,20 @@
 			margin: 1rem;
 		}
 	}
+	@media screen and (max-width: 450px) {
+		div:nth-child(1) {
+			width: 70px;
+			height: 70px;
+		}
+		div:nth-child(2) {
+			width: 120px;
+			height: 120px;
+		}
+		div:nth-child(3) {
+			width: 60px;
+			height: 60px;
+		}
+	}
 }
 
 .app__header-img {
