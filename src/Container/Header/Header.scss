@@ -144,13 +144,20 @@
 		}
 	}
 	@media screen and (max-width: 450px) {
+		width: 100%;
+		flex-direction: row;
+
+		div {
+			margin: 1rem 0;
+		}
+
 		div:nth-child(1) {
-			width: 70px;
-			height: 70px;
+			width: 65px;
+			height: 65px;
 		}
 		div:nth-child(2) {
-			width: 120px;
-			height: 120px;
+			width: 115px;
+			height: 115px;
 		}
 		div:nth-child(3) {
 			width: 60px;

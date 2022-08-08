@@ -19,8 +19,7 @@ const Header = () => {
 			<motion.div
 				whileInView={{ x: [-100, 0], opacity: [0, 1] }}
 				transition={{ duration: 0.5 }}
-				className="app__header-info"
-			>
+				className="app__header-info">
 				<div className="app__header-badge">
 					<div className="badge-cmp app__flex">
 						<span>👋</span>
@@ -39,8 +38,7 @@ const Header = () => {
 			<motion.div
 				whileInView={{ opacity: [0, 1] }}
 				transition={{ duration: 0.5, delayChildren: 0.5 }}
-				className="app__header-img"
-			>
+				className="app__header-img">
 				<img src={images.profile} alt="Profile-Bg" />
 				<motion.img
 					whileInView={{ scale: [0, 1] }}
@@ -54,14 +52,12 @@ const Header = () => {
 			<motion.div
 				variant={scaleVariAnts}
 				whileInView={scaleVariAnts.whileInView}
-				className="app__header-circles"
-			>
+				className="app__header-circles">
 				{[images.react, images.bootstrap, images.tailwind].map(
 					(circle, index) => (
 						<div
 							className="circle-cmp app__flex"
-							key={`circle-${index}`}
-						>
+							key={`circle-${index}`}>
 							<img src={circle} alt="circle" />
 						</div>
 					)
